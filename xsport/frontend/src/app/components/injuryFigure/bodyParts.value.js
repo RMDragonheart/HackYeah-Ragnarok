@@ -8,38 +8,32 @@
             "lowerTorso": { isOdd: false, imageUrl: "/img/lower_torso.png", key: "lowerTorso" },
             "arm": {
                 isOdd: true,
-                key: "arm",
-                left: { imageUrl: "/img/arm_left.png" },
-                right: { imageUrl: "/img/arm_right.png" }
+                left: { imageUrl: "/img/arm_left.png", key: "arm" },
+                right: { imageUrl: "/img/arm_right.png", key: "arm" }
             },
             "forearm": {
                 isOdd: true,
-                key: "forearm",
-                left: { imageUrl: "/img/forearm_left.png" },
-                right: { imageUrl: "/img/forearm_right.png" }
+                left: { imageUrl: "/img/forearm_left.png", key: "forearm" },
+                right: { imageUrl: "/img/forearm_right.png", key: "forearm" }
             },
             "hand": {
                 isOdd: true,
-                key: "hand",
-                left: { imageUrl: "/img/hand_left.png" },
-                right: { imageUrl: "/img/hand_right.png" } },
+                left: { imageUrl: "/img/hand_left.png", key: "hand" },
+                right: { imageUrl: "/img/hand_right.png", key: "hand" } },
             "upperLeg": {
                 isOdd: true,
-                key: "upperLeg",
-                left: { imageUrl: "/img/upper_leg_left.png" },
-                right: { imageUrl: "/img/upper_leg_right.png" }
+                left: { imageUrl: "/img/upper_leg_left.png", key: "upperLeg" },
+                right: { imageUrl: "/img/upper_leg_right.png", key: "upperLeg" }
             },
             "lowerLeg": {
                 isOdd: true,
-                key: "lowerLeg",
-                left: { imageUrl: "/img/lower_leg_left.png" },
-                right: { imageUrl: "/img/lower_leg_right.png" }
+                left: { imageUrl: "/img/lower_leg_left.png", key: "lowerLeg" },
+                right: { imageUrl: "/img/lower_leg_right.png", key: "lowerLeg" }
             },
             "foot": {
                 isOdd: true,
-                key: "foot",
-                left: { imageUrl: "/img/foot_left.png" },
-                right: { imageUrl: "/img/foot_right.png" }
+                left: { imageUrl: "/img/foot_left.png", key: "foot" },
+                right: { imageUrl: "/img/foot_right.png", key: "foot" }
             }
         })
 

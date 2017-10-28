@@ -8,26 +8,55 @@
     function InjuryFigureController($q, $imageLoader, BodyParts) {
         var vm = this;
 
-        var canvas = document.getElementById("figureCanvas");
-        var canvasPosition = getElementPosition(canvas);
-        var ctx2d = canvas.getContext('2d');
+        vm.tintRegular = '#222222';
+        vm.tintAccent = '#CA3327';
 
         vm.onCanvasClick = onCanvasClick;
         vm.onCanvasHover = onCanvasHover;
+        vm.refreshCanvasPosition = refreshCanvasPosition;
+
+        var canvas = document.getElementById("figureCanvas");
+        var ctx2d = canvas.getContext('2d');
+        var canvasPosition = getElementPosition(canvas);
+        var lastHighlightedPart = null;
 
         loadAllBodyParts().then(function() {
-            generateBodyPartsPositions();
+            refreshBodyPartsPositions();
             redrawFigure();
         });
 
         function onCanvasClick(event) {
             var bodyPart = tryGetBodyPartAt(event);
-            if(bodyPart) console.log(bodyPart.key);
+            if (bodyPart) {
+                
+            }
         }
 
         function onCanvasHover(event) {
+            tryClearHighlight();
+
             var bodyPart = tryGetBodyPartAt(event);
-            if(bodyPart) console.log(bodyPart.key);
+            if (bodyPart) {
+                highlightBodyPart(bodyPart);
+                lastHighlightedPart = bodyPart;
+            }
+        }
+
+        function highlightBodyPart(bodyPart) {
+            bodyPart.tint = vm.tintAccent;
+            redrawFigure();
+        }
+
+        function tryClearHighlight() {
+            if (lastHighlightedPart) {
+                clearHighlight(lastHighlightedPart);
+                lastHighlightedPart = null;
+            }
+        }
+
+        function clearHighlight(bodyPart) {
+            bodyPart.tint = null;
+            redrawFigure();
         }
 
         function tryGetBodyPartAt(event) {
@@ -49,7 +78,7 @@
 
                     var distance = distanceBetween(inlineX, inlineY, bodyPart.x, bodyPart.y);
                     if (distance < closestDistance && isInBodyPartBoundaries(inlineX, inlineY, bodyPart))
-                        overlappedPart = BodyParts[key];
+                        overlappedPart = bodyPart;
                 }
                 return overlappedPart;
             }
@@ -75,6 +104,10 @@
             return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
         }
 
+        function refreshCanvasPosition() {
+            if(canvas) canvasPosition = getElementPosition(canvas);
+        }
+
         function getElementPosition(obj) {
             var curleft = 0, curtop = 0;
             if (obj.offsetParent) {
@@ -85,6 +118,43 @@
                 return { x: curleft, y: curtop };
             }
             return undefined;
+        }
+
+        function redrawFigure() {
+            ctx2d.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (var key in BodyParts) {
+                var bodyPart = BodyParts[key];
+
+                if (bodyPart.isOdd) {
+                    drawBodyPartImage(bodyPart.left);
+                    drawBodyPartImage(bodyPart.right);
+                }
+                else {
+                    drawBodyPartImage(bodyPart)
+                }
+            }
+        }
+
+        function drawBodyPartImage(bodyPart) {
+            if (bodyPart.x && bodyPart.y) {
+                var offsetX = bodyPart.x - bodyPart.image.width * 0.5;
+                var offsetY = bodyPart.y - bodyPart.image.height * 0.5;
+
+                var buffer = document.createElement('canvas');
+                buffer.width = bodyPart.width;
+                buffer.height = bodyPart.height;
+                var bufferCtx = buffer.getContext('2d');
+
+                bufferCtx.fillStyle = bodyPart.tint || vm.tintRegular;
+                bufferCtx.fillRect(0, 0, buffer.width, buffer.height);
+
+                bufferCtx.globalCompositeOperation = "destination-atop";
+                bufferCtx.drawImage(bodyPart.image, 0, 0);
+
+                ctx2d.globalAlpha = 1.0;
+                ctx2d.drawImage(buffer, offsetX, offsetY);
+            }
         }
 
         function loadAllBodyParts() {
@@ -132,7 +202,7 @@
             });
         }
 
-        function generateBodyPartsPositions() {
+        function refreshBodyPartsPositions() {
             var middle = { x: canvas.width * 0.5, y: canvas.height * 0.5 };
             var partsOffset = 6;
 
@@ -199,28 +269,6 @@
 
             BodyParts.foot.right.x = 2 * middle.x - BodyParts.foot.left.x;
             BodyParts.foot.right.y = BodyParts.foot.left.y;
-        }
-
-        function redrawFigure() {
-            for (var key in BodyParts) {
-                var bodyPart = BodyParts[key];
-
-                if (bodyPart.isOdd) {
-                    drawBodyPartImage(bodyPart.left);
-                    drawBodyPartImage(bodyPart.right);
-                }
-                else {
-                    drawBodyPartImage(bodyPart)
-                }
-            }
-        }
-
-        function drawBodyPartImage(bodyPart) {
-            if (bodyPart.x && bodyPart.y) {
-                var offsetX = bodyPart.x - bodyPart.image.width * 0.5;
-                var offsetY = bodyPart.y - bodyPart.image.height * 0.5;
-                ctx2d.drawImage(bodyPart.image, offsetX, offsetY);
-            }
         }
     }
 
