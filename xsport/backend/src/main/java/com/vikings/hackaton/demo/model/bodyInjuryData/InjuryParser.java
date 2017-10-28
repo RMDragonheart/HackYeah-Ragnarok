@@ -24,12 +24,7 @@ public class InjuryParser {
 		for (Element element : tag) {
 			String text = element.text();
 			if (!text.isEmpty()) {
-				StringBuffer fuckingMarkDeleter = new StringBuffer();
-				for (int i = 0; i < text.length(); i++) {
-					if (Byte.valueOf("" + text.charAt(i)) != -96) {
-						System.out.println("YEEEE!");
-					}
-				}
+				text = text.replaceAll("\u00A0"," ");
 				String[] separatedData = text.split("\\s{2,}");
 				for (String s : separatedData) {
 					save.println(s);
