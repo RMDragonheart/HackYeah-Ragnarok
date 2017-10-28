@@ -36,9 +36,8 @@ public class DataForm extends JPanel {
     add(button = new JButton("Find GEO data"));
 
     button.addActionListener(e -> {
-      geoPositionRetrievalService.getGeoPosition(street.getText(), houseNumber.getText()).ifPresent(addressGeoData -> {
-        XYData xyData = new GeoToXYConverter().convertData(addressGeoData);
-        JOptionPane.showMessageDialog(DataForm.this, xyData.toString(), "Results", JOptionPane.INFORMATION_MESSAGE);
+      geoPositionRetrievalService.getXYData(street.getText(), houseNumber.getText()).ifPresent(addressGeoData -> {
+        JOptionPane.showMessageDialog(DataForm.this, addressGeoData.toString(), "Results", JOptionPane.INFORMATION_MESSAGE);
       });
     });
   }

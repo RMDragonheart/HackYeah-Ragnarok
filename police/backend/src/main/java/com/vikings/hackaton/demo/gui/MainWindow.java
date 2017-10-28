@@ -2,6 +2,7 @@ package com.vikings.hackaton.demo.gui;
 
 import com.google.common.base.Throwables;
 import com.vikings.hackaton.demo.reader.OsmDataReader;
+import com.vikings.hackaton.demo.reader.PreparedDataReader;
 import com.vikings.hackaton.demo.service.GeoPositionRetrievalService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * @author lukaszgrabski
@@ -66,8 +68,8 @@ public class MainWindow extends JFrame {
     progress.setIndeterminate(true);
   }
 
-  private void loadData() throws FileNotFoundException {
-    geoPositionRetrievalService = new GeoPositionRetrievalService(getOsmDataReader());
+  private void loadData() throws IOException {
+    geoPositionRetrievalService = new GeoPositionRetrievalService(getPreparedDataReader());
     geoPositionRetrievalService.loadData();
   }
 
@@ -77,8 +79,8 @@ public class MainWindow extends JFrame {
     setSize(new Dimension(800, 600));
   }
 
-  public OsmDataReader getOsmDataReader() throws FileNotFoundException {
-    return new OsmDataReader(new FileInputStream("/opt/data/osm/malopolskie-latest.osm"));
+  public PreparedDataReader getPreparedDataReader() throws FileNotFoundException {
+    return new PreparedDataReader(new FileInputStream("/opt/data/osm/malopolskie.csv"));
   }
 }
 

@@ -1,9 +1,11 @@
 package com.vikings.hackaton.demo.service;
 
+import com.vikings.hackaton.demo.converter.XYData;
 import com.vikings.hackaton.demo.model.StreetBuildingsLocations;
 import com.vikings.hackaton.demo.model.address.AddressGeoData;
-import com.vikings.hackaton.demo.reader.OsmDataReader;
+import com.vikings.hackaton.demo.reader.PreparedDataReader;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
 
@@ -14,16 +16,16 @@ import static com.google.common.collect.Maps.newHashMap;
  */
 public class GeoPositionRetrievalService {
 
-  private OsmDataReader osmDataReader;
+  private PreparedDataReader dataReader;
 
   private Map<String, StreetBuildingsLocations> addressMap = newHashMap();
 
-  public GeoPositionRetrievalService(OsmDataReader osmDataReader) {
-    this.osmDataReader = osmDataReader;
+  public GeoPositionRetrievalService(PreparedDataReader osmDataReader) {
+    this.dataReader = osmDataReader;
   }
 
-  public void loadData() {
-    osmDataReader.readData(osmNode -> {
+  public void loadData() throws IOException {
+    dataReader.readData(osmNode -> {
       String streetName = osmNode.getStreet();
 
       StreetBuildingsLocations buildingsLocations = addressMap.get(streetName);
@@ -32,11 +34,11 @@ public class GeoPositionRetrievalService {
         addressMap.put(streetName, buildingsLocations);
       }
 
-      buildingsLocations.newBuilding(osmNode.getHouseNumber(), osmNode.getLatitude(), osmNode.getLongitude());
+      buildingsLocations.newBuilding(osmNode.getBuildingNumber(), osmNode.getX(), osmNode.getY());
     });
   }
 
-  public Optional<AddressGeoData> getGeoPosition(String street, String number) {
+  public Optional<XYData> getXYData(String street, String number) {
     StreetBuildingsLocations streetBuildingsLocations = addressMap.get(street);
     if (streetBuildingsLocations == null) {
       return Optional.empty();

@@ -1,5 +1,6 @@
 package com.vikings.hackaton.demo.model;
 
+import com.vikings.hackaton.demo.converter.XYData;
 import com.vikings.hackaton.demo.model.address.AddressGeoData;
 
 import java.util.Map;
@@ -11,13 +12,13 @@ import static com.google.common.collect.Maps.newHashMap;
  */
 public class StreetBuildingsLocations {
 
-  private Map<String, AddressGeoData> buildings = newHashMap();
+  private Map<String, XYData> buildings = newHashMap();
 
-  public void newBuilding(String houseNumber, double latitude, double longitude) {
-    buildings.put(houseNumber, new AddressGeoData(latitude, longitude));
+  public void newBuilding(String houseNumber, String x, String y) {
+    buildings.put(houseNumber, new XYData(x, y));
   }
 
-  public AddressGeoData getBuildingLocation(String number) {
+  public XYData getBuildingLocation(String number) {
     return buildings.get(number);
   }
 }

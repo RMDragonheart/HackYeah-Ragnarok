@@ -29,11 +29,6 @@ public class OsmDataHandler extends DefaultHandler {
   }
 
   @Override
-  public void startDocument() throws SAXException {
-    super.startDocument();
-  }
-
-  @Override
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     if ("node".equals(localName)) {
       String latitude = attributes.getValue("lat");
