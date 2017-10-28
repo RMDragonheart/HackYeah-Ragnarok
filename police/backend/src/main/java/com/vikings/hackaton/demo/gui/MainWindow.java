@@ -25,11 +25,14 @@ public class MainWindow extends JFrame {
 
   private JProgressBar progress;
   private GeoPositionRetrievalService geoPositionRetrievalService;
+  private JLabel loadingLabel;
 
   public MainWindow() {
     super("Address Data");
     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     setLayout(new BorderLayout());
+    setResizable(false);
+
     initializeComponents();
 
     SwingWorker worker = new SwingWorker() {
@@ -37,6 +40,7 @@ public class MainWindow extends JFrame {
       protected Object doInBackground() throws Exception {
         try {
           loadData();
+          displayDataForm();
         } catch (FileNotFoundException e) {
           LOGGER.error("An error occurred while loading data.", e);
           JOptionPane.showMessageDialog(MainWindow.this, Throwables.getRootCause(e).getMessage(), "Error!!!!", JOptionPane.ERROR_MESSAGE);
@@ -47,9 +51,17 @@ public class MainWindow extends JFrame {
     worker.execute();
   }
 
-  private void initializeComponents() {
-    add(new JLabel("Loading data ..."), BorderLayout.PAGE_START);
+  private void displayDataForm() {
+    remove(progress);
+    remove(loadingLabel);
+    add(new DataForm(geoPositionRetrievalService), BorderLayout.CENTER);
 
+    repaint();
+    revalidate();
+  }
+
+  private void initializeComponents() {
+    add(loadingLabel = new JLabel("Loading data ..."), BorderLayout.PAGE_START);
     add(progress = new JProgressBar(), BorderLayout.PAGE_END);
     progress.setIndeterminate(true);
   }
@@ -57,7 +69,6 @@ public class MainWindow extends JFrame {
   private void loadData() throws FileNotFoundException {
     geoPositionRetrievalService = new GeoPositionRetrievalService(getOsmDataReader());
     geoPositionRetrievalService.loadData();
-    progress.setIndeterminate(false);
   }
 
   public void display() {
