@@ -3,10 +3,10 @@
 
 	angular
 		.module('rampup')
-		.directive('taskBar', TaskBar);
+		.directive('exampleComponent', ExampleComponent);
 
 	/** @ngInject */
-	function TaskBar() {
+	function ExampleComponent() {
 		return {
 			restrict: 'E',
 			templateUrl: 'app/components/exampleComponent/component.html',
