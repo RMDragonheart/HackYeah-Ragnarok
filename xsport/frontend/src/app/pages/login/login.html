@@ -1,0 +1,39 @@
+<toolbar-component></toolbar-component>
+
+
+<div ng-controller="LoginController as pageCtrl" layout="row" layout-align="center center">
+    <md-card class="login--card">
+      <!-- icon -->
+      <img src="img/icon_man.png" alt="profile icon" class="login--icon">
+  
+      <form name="clientLogin" class="login--form">
+        <!-- username -->
+        <md-input-container class="login--input">
+          <input name="userName" type="text" placeholder="Username" ng-model="user.name" required>
+          <div ng-messages="clientLogin.userName.$error">
+            <div ng-message="required">Your username name is required.</div>
+          </div>
+        </md-input-container>
+  
+        <!-- password -->
+        <md-input-container class="login--input">
+          <input name="userPassword" type="password" placeholder="Password" ng-model="user.password"  required>
+          <div ng-messages="clientLogin.userPassword.$error">
+            <div ng-message="required">Your password is required.</div>
+          </div>
+        </md-input-container>
+  
+        <!-- progrss circle -->
+        <md-progress-circular class="login--process" ng-show="process"></md-progress-circular>
+  
+        <!-- incorect password -->
+        <p class="login--error" ng-show="showError">{{error}}</p>
+  
+        <!-- login button -->
+        <div class="login--btns">
+          <md-button class="md-raised md-primary login--btn" ng-click="login()" ng-disabled="clientLogin.$invalid">Login</md-button>
+          <md-button class="md-raised md-primary login--btn" ng-click="signup()">Create an Account</md-button>
+        </div>
+      </form>
+    </md-card>
+  </div>

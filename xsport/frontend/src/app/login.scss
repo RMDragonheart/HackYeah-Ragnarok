@@ -1,0 +1,56 @@
+.login--card {
+    margin-top: 100px;
+    width: 400px;
+    text-align: center; }
+  
+  @media (max-width: 600px) {
+    .login--card {
+      margin-top: 30px; } }
+  
+  @media (max-width: 420px) {
+    .login--card {
+      margin-top: 10px; } }
+  
+  .login--input {
+    display: inline-block;
+    margin: 10px 0;
+    width: 80%;
+    text-align: left; }
+  
+  .login--process {
+    display: block;
+    margin: 20px auto 30px auto; }
+  
+  .login--error {
+    margin: 20px 0 30px 0;
+    color: red; }
+  
+  .login--icon {
+    display: block;
+    margin: 60px auto 0 auto;
+    width: 150px;
+    height: auto; }
+  
+  .login--btns {
+    margin-top: 40px;
+    margin-bottom: 20px; }
+  
+  .login--btn {
+    width: 80%;
+    height: 40px; }
+  
+  .login--signup {
+    text-decoration: none;
+    color: #283593;
+    margin-top: 20px; }
+  
+  .login--form {
+    margin-top: 30px; }
+  
+  .login--header {
+    margin-top: 50px; }
+  
+  .login--terms {
+    width: 80%;
+    margin: 20px auto 0 auto;
+    text-align: left; }
