@@ -16,6 +16,6 @@ public class AddressesDictionaryParserTest {
     AddressesDictionaryReader dictionaryReader = new AddressesDictionaryReader(getClass().getClassLoader().getResourceAsStream("addresses.csv"));
 
     // when
-    dictionaryReader.parseAddresses();
+    dictionaryReader.parseAddresses().forEach(address -> System.out.printf("Address: %s \n", address));
   }
 }

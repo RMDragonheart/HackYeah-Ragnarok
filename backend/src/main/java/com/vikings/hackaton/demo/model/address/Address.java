@@ -41,4 +41,14 @@ public class Address {
   public void setTerritoryCode(int territoryCode) {
     this.territoryCode = territoryCode;
   }
+
+  @Override
+  public String toString() {
+    return "Address{" +
+            "street='" + street + '\'' +
+            ", number='" + number + '\'' +
+            ", locationType=" + locationType +
+            ", territoryCode=" + territoryCode +
+            '}';
+  }
 }
