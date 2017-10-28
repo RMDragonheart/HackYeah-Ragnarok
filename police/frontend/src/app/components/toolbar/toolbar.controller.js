@@ -8,7 +8,7 @@
 	function ToolbarController() {
 		var vm = this;
 
-		vm.name = "Vikings App"
+		vm.name = "Police App"
 	}
 
 })();

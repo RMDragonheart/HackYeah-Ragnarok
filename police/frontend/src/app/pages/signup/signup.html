@@ -1,0 +1,52 @@
+<toolbar-component></toolbar-component>
+
+<div ng-controller="SignupController as pageCtrl" layout="row" layout-align="center center">
+  <md-card class="login--card">
+    <h2 class="login--header">Create an Account</h2>
+
+    <form name="clientRegister" class="login--form">
+      <!-- username -->
+      <md-input-container class="login--input">
+        <input name="userName" type="text" placeholder="Username" ng-model="user.name" required>
+        <div ng-messages="clientRegister.userName.$error">
+          <div ng-message="required">This field is required.</div>
+        </div>
+      </md-input-container>
+
+      <!-- password -->
+      <md-input-container class="login--input">
+        <input name="userPassword" type="password" placeholder="Password" ng-model="user.password"  required>
+        <div ng-messages="clientRegister.userPassword.$error">
+          <div ng-message="required">This field is required.</div>
+        </div>
+      </md-input-container>
+
+      <!-- re-type password -->
+      <md-input-container class="login--input">
+        <input name="userPasswordRe" type="password" placeholder="Re-Type Password" ng-model="user.passwordRe"  required>
+        <div ng-messages="clientRegister.userPasswordRe.$error">
+          <div ng-message="required">This field is required.</div>
+        </div>
+      </md-input-container>
+
+      <!-- terms of use -->
+      <div class="login--terms">
+        <md-checkbox class="md-primary" ng-model="terms" aria-label="Terms of Use" required>
+          Accept Terms of Use
+        </md-checkbox>
+      </div>
+
+      <!-- progrss circle -->
+      <md-progress-circular class="login--process" ng-show="process"></md-progress-circular>
+
+      <!-- errors -->
+      <p class="login--error" ng-show="showError">{{error}}</p>
+
+      <!-- buttons -->
+      <div class="login--btns">
+        <md-button class="md-raised md-primary login--btn" ng-click="signup()" ng-disabled="clientRegister.$invalid">Sign Up</md-button>
+        <md-button class="md-raised md-primary login--btn" ng-click="cancel()">Cancel</md-button>
+      </div>
+    </form>
+  </md-card>
+</div>
