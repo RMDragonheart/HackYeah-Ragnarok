@@ -1,12 +1,15 @@
 package com.vikings.hackaton.demo;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+import com.vikings.hackaton.demo.gui.MainWindow;
+
 public class DemoApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
-    }
+  public static void main(String[] args) {
+    new DemoApplication().doShit();
+  }
+
+  private void doShit() {
+    new MainWindow().display();
+  }
 }

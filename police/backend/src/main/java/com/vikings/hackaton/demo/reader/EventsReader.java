@@ -27,10 +27,19 @@ public class EventsReader {
     CSVParser csvParser = new CSVParser(new InputStreamReader(dataStream), CSVFormat.newFormat(';'));
     csvParser.forEach(record -> {
       String street = record.get(1);
+      street = normalize(street);
       String number = record.get(2);
 
       eventList.add(new Event(street, number));
     });
     return eventList;
+  }
+
+  private String normalize(String street) {
+    return street.toLowerCase()
+            .replaceAll("ul. ", "")
+            .replaceAll("os. ", "")
+            .replaceAll("aleja ", "")
+            .replaceAll("osiedle ", "");
   }
 }
