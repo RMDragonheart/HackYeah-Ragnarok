@@ -24,6 +24,12 @@
 		<java.version>1.8</java.version>
 
 		<guava.version>23.3-jre</guava.version>
+
+		<!-- Testing -->
+		<junit.junit.version>4.8.1</junit.junit.version>
+		<org.mockito.version>1.9.0</org.mockito.version>
+		<fest-assert.version>1.4</fest-assert.version>
+		<pl.pragmatists.JUnitParams.version>1.0.2</pl.pragmatists.JUnitParams.version>
 	</properties>
 
 	<dependencies>
@@ -47,7 +53,36 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>pl.pragmatists</groupId>
+			<artifactId>JUnitParams</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easytesting</groupId>
+			<artifactId>fest-assert</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.5</version>
+		</dependency>
 	</dependencies>
+
+
 
 	<build>
 		<plugins>
