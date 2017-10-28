@@ -1,11 +1,10 @@
 package com.vikings.hackaton.demo.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-/**
- * Created by patryk on 28.10.17.
- */
 @AllArgsConstructor
+@Getter
 public class Localisation {
     private int id;
     private String name;

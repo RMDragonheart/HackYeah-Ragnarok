@@ -7,21 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by patryk on 28.10.17.
- */
 @RestController
 @RequestMapping("/injuries")
 public class InjuriesController {
 
     @Autowired
-    DatabaseConnector databaseConnector;
+    private DatabaseConnector databaseConnector;
 
     @GetMapping("/")
     public List<Injury> injuries() {

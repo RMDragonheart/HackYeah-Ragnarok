@@ -5,9 +5,6 @@ import lombok.Getter;
 
 import java.util.List;
 
-/**
- * Created by patryk on 28.10.17.
- */
 @Getter
 @AllArgsConstructor
 public class Sport {
