@@ -3,10 +3,7 @@ package com.vikings.hackaton.demo.service;
 import com.vikings.hackaton.demo.model.StreetBuildingsLocations;
 import com.vikings.hackaton.demo.model.address.AddressGeoData;
 import com.vikings.hackaton.demo.reader.OsmDataReader;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.Map;
 import java.util.Optional;
 

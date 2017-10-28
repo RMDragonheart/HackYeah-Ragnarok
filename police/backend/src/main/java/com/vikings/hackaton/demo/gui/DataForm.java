@@ -1,5 +1,7 @@
 package com.vikings.hackaton.demo.gui;
 
+import com.vikings.hackaton.demo.converter.GeoToXYConverter;
+import com.vikings.hackaton.demo.converter.XYData;
 import com.vikings.hackaton.demo.service.GeoPositionRetrievalService;
 
 import javax.swing.JButton;
@@ -35,7 +37,8 @@ public class DataForm extends JPanel {
 
     button.addActionListener(e -> {
       geoPositionRetrievalService.getGeoPosition(street.getText(), houseNumber.getText()).ifPresent(addressGeoData -> {
-        JOptionPane.showMessageDialog(DataForm.this, addressGeoData.toString(), "Results", JOptionPane.INFORMATION_MESSAGE);
+        XYData xyData = new GeoToXYConverter().convertData(addressGeoData);
+        JOptionPane.showMessageDialog(DataForm.this, xyData.toString(), "Results", JOptionPane.INFORMATION_MESSAGE);
       });
     });
   }
