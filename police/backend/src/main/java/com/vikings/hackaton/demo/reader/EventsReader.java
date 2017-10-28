@@ -38,9 +38,11 @@ public class EventsReader {
   private String normalize(String street) {
     return street.toLowerCase()
             .replaceAll("ul. ", "")
+            .replaceAll("ul ", "")
             .replaceAll("os. ", "osiedle ")
+            .replaceAll("os ", "osiedle ")
             .replaceAll("al. ", "aleja ")
-            .replaceAll("aleja ", "")
-            .replaceAll("osiedle ", "");
+            .replaceAll("al ", "aleja ");
+
   }
 }
