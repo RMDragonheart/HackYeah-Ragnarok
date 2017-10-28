@@ -1,4 +1,4 @@
-package com.vikings.hackaton.demo.parser;
+package com.vikings.hackaton.demo.reader;
 
 import com.vikings.hackaton.demo.model.event.Event;
 import org.apache.commons.csv.CSVFormat;
@@ -14,11 +14,11 @@ import static com.google.common.collect.Lists.newArrayList;
 /**
  * @author lukaszgrabski
  */
-public class EventsParser {
+public class EventsReader {
 
   private final InputStream dataStream;
 
-  public EventsParser(InputStream dataStream) {
+  public EventsReader(InputStream dataStream) {
     this.dataStream = dataStream;
   }
 

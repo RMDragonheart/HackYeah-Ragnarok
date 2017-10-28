@@ -1,4 +1,4 @@
-package com.vikings.hackaton.demo.parser;
+package com.vikings.hackaton.demo.reader;
 
 import com.vikings.hackaton.demo.model.address.Address;
 import com.vikings.hackaton.demo.model.address.AddressGeoData;

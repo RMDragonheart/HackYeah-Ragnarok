@@ -1,6 +1,7 @@
 package com.vikings.hackaton.demo.parser;
 
 
+import com.vikings.hackaton.demo.reader.AddressesDictionaryReader;
 import org.junit.Test;
 
 import java.io.IOException;

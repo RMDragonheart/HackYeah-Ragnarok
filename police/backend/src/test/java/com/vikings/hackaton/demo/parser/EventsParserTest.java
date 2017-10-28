@@ -1,6 +1,7 @@
 package com.vikings.hackaton.demo.parser;
 
 import com.vikings.hackaton.demo.model.event.Event;
+import com.vikings.hackaton.demo.reader.EventsReader;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class EventsParserTest {
   @Test
   public void shouldParseEvents() throws IOException {
     // given
-    EventsParser eventsParser = new EventsParser(getClass().getClassLoader().getResourceAsStream("events.csv"));
+    EventsReader eventsParser = new EventsReader(getClass().getClassLoader().getResourceAsStream("events.csv"));
 
     // when
     List<Event> events = eventsParser.parseEvents();
