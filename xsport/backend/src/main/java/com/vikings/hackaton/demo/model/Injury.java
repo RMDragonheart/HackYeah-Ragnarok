@@ -9,6 +9,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Injury {
+    private int id;
     private String name;
     private BodyPart bodyPart;
 
