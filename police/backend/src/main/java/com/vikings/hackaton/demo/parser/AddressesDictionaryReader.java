@@ -1,6 +1,7 @@
 package com.vikings.hackaton.demo.parser;
 
 import com.vikings.hackaton.demo.model.address.Address;
+import com.vikings.hackaton.demo.model.address.AddressGeoData;
 import com.vikings.hackaton.demo.model.address.AddressLocationType;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -8,9 +9,12 @@ import org.apache.commons.csv.CSVParser;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static java.lang.Double.parseDouble;
 
 /**
  * @author lukaszgrabski
@@ -39,10 +43,14 @@ public class AddressesDictionaryReader {
       if (!isMissingTerritoryCode(territoryCode)) {
         addressEntry.setTerritoryCode(Integer.parseInt(record.get(7)));
       }
-
+      addressEntry.setGeoData(new AddressGeoData(asDouble(record.get(10)), asDouble(record.get(11))));
       addressList.add(addressEntry);
     });
     return addressList;
+  }
+
+  private double asDouble(String doubleStringValue) {
+    return parseDouble(doubleStringValue.replaceAll(",", "."));
   }
 
   private boolean isMissingTerritoryCode(String territoryCode) {

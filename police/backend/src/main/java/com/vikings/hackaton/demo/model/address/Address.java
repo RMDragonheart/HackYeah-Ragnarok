@@ -9,6 +9,7 @@ public class Address {
   private String number;
   private AddressLocationType locationType;
   private int territoryCode;
+  private AddressGeoData geoData;
 
   public String getStreet() {
     return street;
@@ -42,6 +43,14 @@ public class Address {
     this.territoryCode = territoryCode;
   }
 
+  public AddressGeoData getGeoData() {
+    return geoData;
+  }
+
+  public void setGeoData(AddressGeoData geoData) {
+    this.geoData = geoData;
+  }
+
   @Override
   public String toString() {
     return "Address{" +
@@ -49,6 +58,7 @@ public class Address {
             ", number='" + number + '\'' +
             ", locationType=" + locationType +
             ", territoryCode=" + territoryCode +
+            ", geoData=" + geoData +
             '}';
   }
 }
