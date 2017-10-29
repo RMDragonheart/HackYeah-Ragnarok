@@ -5,6 +5,7 @@ import com.vikings.hackaton.demo.model.Localisation;
 import com.vikings.hackaton.demo.model.db.DatabaseConnector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,8 +41,8 @@ public class LocationController {
                 .map(localisations::get).collect(Collectors.toList());
     }
 
-    @PostMapping("/{id}")
-    public List<Localisation> sportLocations(@RequestParam Integer id) {
+    @GetMapping("/{id}")
+    public List<Localisation> sportLocations(@PathVariable Integer id) {
         List<Integer> localisationsIds = databaseConnector.getSports().stream().filter(sport1 -> sport1.getId() == id).findFirst().get().getLocalisations();
         return databaseConnector.getLocalisations().stream().filter(localisation -> localisationsIds.contains(localisation.getId())).collect(Collectors.toList());
     }
