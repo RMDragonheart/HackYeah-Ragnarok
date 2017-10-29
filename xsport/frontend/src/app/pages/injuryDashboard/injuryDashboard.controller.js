@@ -5,7 +5,7 @@
         .controller('InjuryDashboardController', InjuryDashboardController);
 
     /** @ngInject */
-    function InjuryDashboardController($scope, $injurySelector) {
+    function InjuryDashboardController($scope, $injurySelector, $xsportsClient) {
         var vm = this;
 
         vm.selectedBodyPart = null;
@@ -14,6 +14,11 @@
 
         function updateSelectedBodyPart() {
             vm.selectedBodyPart = $injurySelector.selectedBodyPart;
+            if (vm.selectedBodyPart) {
+                $xsportsClient.retrieveInjuriesForBodyPart(vm.selectedBodyPart.key).then(function(response) {
+                    // TODO: update view
+                });
+            }
         }
     }
 
