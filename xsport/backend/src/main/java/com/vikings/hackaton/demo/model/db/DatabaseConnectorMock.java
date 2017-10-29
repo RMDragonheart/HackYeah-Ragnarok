@@ -27,8 +27,8 @@ public class DatabaseConnectorMock implements DatabaseConnector {
             new Sport(9, "Capoeira", Arrays.asList(1, 2, 3, 5), Arrays.asList(13)),
             new Sport(10, "Dancing", Arrays.asList(1, 2, 3, 5), Arrays.asList(2, 10, 13)),
             new Sport(11, "Fencing", Arrays.asList(1, 2, 3, 4, 5, 6), Arrays.asList(9)),
-            new Sport(11, "Basketball", Arrays.asList(2,3,4,6), Arrays.asList(2, 12)),
-            new Sport(11, "Balloon flying", Arrays.asList(), Arrays.asList(7))
+            new Sport(12, "Basketball", Arrays.asList(2,3,4,6), Arrays.asList(2, 12)),
+            new Sport(13, "Balloon flying", Arrays.asList(), Arrays.asList(7))
     );
 
     private static final List<Injury> injuries = Arrays.asList(
