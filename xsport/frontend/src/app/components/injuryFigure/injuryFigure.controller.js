@@ -72,7 +72,8 @@
         }
 
         function highlightBodyPart(bodyPart) {
-            bodyPart.tint = bodyPart === $injuryReporter.selectedBodyPart ? vm.tintSelection : vm.tintAccent;
+            var tint = bodyPart === $injuryReporter.selectedBodyPart ? vm.tintSelection : vm.tintAccent;
+            bodyPart.tint = $injuryReporter.hasReportedInjuresForBodyPart(bodyPart) ? vm.tintInjure : tint;
             redrawFigure();
         }
 
