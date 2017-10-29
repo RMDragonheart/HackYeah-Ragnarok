@@ -17,10 +17,10 @@ public class DatabaseConnectorMock implements DatabaseConnector {
     private static final List<Sport> sports = Arrays.asList(
             new Sport(0, "SlackLine", Arrays.asList(1, 2, 3, 5), Arrays.asList(0, 1, 2, 3, 4)),
             new Sport(1, "Swimming", Arrays.asList(2, 3), Arrays.asList(0, 2, 3, 5, 6)),
-            new Sport(2, "Climbing", Arrays.asList(4, 2, 3, 6), Arrays.asList(1, 2, 4)),
+            new Sport(2, "Climbing", Arrays.asList(4, 2, 3, 6, 7), Arrays.asList(1, 2, 4)),
             new Sport(3, "Running", Arrays.asList(1, 2, 3, 5), Arrays.asList(0, 2, 3)),
             new Sport(4, "Ice skating", Arrays.asList(1, 2, 3, 5), Arrays.asList(11)),
-            new Sport(5, "Wakeboarding", Arrays.asList(2, 3, 4, 5, 6), Arrays.asList(6)),
+            new Sport(5, "Wakeboarding", Arrays.asList(2, 3, 4, 5, 6, 7), Arrays.asList(6)),
             new Sport(6, "Kayaking", Arrays.asList(0, 2, 3, 4, 6), Arrays.asList(5)),
             new Sport(7, "Football", Arrays.asList(1, 2, 3, 5), Arrays.asList(2,5,12)),
             new Sport(8, "Quidditch", Arrays.asList(0, 1, 2, 3, 4, 5, 6), Arrays.asList(2, 12)),
@@ -38,7 +38,8 @@ public class DatabaseConnectorMock implements DatabaseConnector {
             new Injury(3, "Broken Spine - paralysed", BodyPart.MAIN_BODY),
             new Injury(4, "Both hands amputation", BodyPart.HAND),
             new Injury(5, "Both legs amputation", BodyPart.LEG),
-            new Injury(6, "No grip in hands", BodyPart.HAND)
+            new Injury(6, "No grip in hands", BodyPart.HAND),
+            new Injury(7, "Heart problems", BodyPart.MAIN_BODY)
     );
 
     private static final List<Localisation> localisations = Arrays.asList(
