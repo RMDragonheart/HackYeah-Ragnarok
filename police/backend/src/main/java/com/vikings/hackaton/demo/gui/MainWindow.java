@@ -1,7 +1,6 @@
 package com.vikings.hackaton.demo.gui;
 
 import com.google.common.base.Throwables;
-import com.vikings.hackaton.demo.reader.OsmDataReader;
 import com.vikings.hackaton.demo.reader.PreparedDataReader;
 import com.vikings.hackaton.demo.service.GeoPositionRetrievalService;
 import org.slf4j.Logger;
@@ -14,6 +13,7 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -28,6 +28,7 @@ public class MainWindow extends JFrame {
   private JProgressBar progress;
   private GeoPositionRetrievalService geoPositionRetrievalService;
   private JLabel loadingLabel;
+  private InputDataForm inputDataForm;
 
   public MainWindow() {
     super("Address Data");
@@ -42,7 +43,7 @@ public class MainWindow extends JFrame {
       protected Object doInBackground() throws Exception {
         try {
           loadData();
-          displayDataForm();
+          displayFileInputForm();
         } catch (FileNotFoundException e) {
           LOGGER.error("An error occurred while loading data.", e);
           JOptionPane.showMessageDialog(MainWindow.this, Throwables.getRootCause(e).getMessage(), "Error!!!!", JOptionPane.ERROR_MESSAGE);
@@ -53,11 +54,25 @@ public class MainWindow extends JFrame {
     worker.execute();
   }
 
-  private void displayDataForm() {
+  private void displayFileInputForm() {
     remove(progress);
     remove(loadingLabel);
-    add(new DataForm(geoPositionRetrievalService), BorderLayout.CENTER);
+    add(inputDataForm = new InputDataForm(geoPositionRetrievalService, file -> {
+      displayDataGenerateForm(file);
+    }), BorderLayout.CENTER);
 
+    repaint();
+    revalidate();
+  }
+
+  private void displayDataGenerateForm(File file) {
+    remove(inputDataForm);
+    try {
+      add(new DataGenerateForm(file, geoPositionRetrievalService));
+    } catch (IOException e) {
+      LOGGER.error("!!!!!!", e);
+      return;
+    }
     repaint();
     revalidate();
   }
