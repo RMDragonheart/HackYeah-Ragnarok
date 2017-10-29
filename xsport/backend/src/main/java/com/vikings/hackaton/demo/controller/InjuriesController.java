@@ -19,7 +19,7 @@ public class InjuriesController {
     @Autowired
     private DatabaseConnector databaseConnector;
 
-    @GetMapping("/")
+    @GetMapping
     public List<Injury> injuries() {
         return databaseConnector.getInjuries();
     }

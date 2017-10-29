@@ -1,0 +1,12 @@
+if (window['google'] != undefined && window['google']['loader'] != undefined) {
+if (!window['google']['search']) {
+window['google']['search'] = {};
+google.search.Version = '1.0';
+google.search.NoOldNames = false;
+google.search.JSHash = 'bb73d6800fca299b36665ebff4d01037';
+google.search.LoadArgs = 'file\x3dsearch\x26v\x3d1\x26hl\x3dpl\x26style\x3d%2F%2Fwww.google.com%2Fcse%2Fstatic%2Fstyle%2Flook%2Fv2%2Fdefault.css';
+}
+google.loader.writeLoadTag("css", google.loader.ServiceBase + "/api/search/1.0/bb73d6800fca299b36665ebff4d01037/default+pl.css", false);
+google.loader.writeLoadTag("css", "//www.google.com/cse/static/style/look/v2/default.css", false);
+google.loader.writeLoadTag("script", google.loader.ServiceBase + "/api/search/1.0/bb73d6800fca299b36665ebff4d01037/default+pl.I.js", false);
+}

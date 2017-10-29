@@ -1,0 +1,60 @@
+<toolbar-component></toolbar-component>
+
+<div ng-controller="InjuryDashboardController as pageCtrl" layout="row" layout-fill layout-align="center fill">
+    <div style="padding: 0 20px;">
+        <injury-figure></injury-figure>
+    </div>
+
+    <md-divider></md-divider>
+
+    <div flex>
+        <md-content layout="column"
+                    layout-fill
+                    layout-padding
+                    layout-align="start fill"
+                    style="padding-left: 30px;"
+                    ng-show="pageCtrl.selectedBodyPart">
+
+            <div><h1>{{pageCtrl.selectedBodyPart.displayName}}</h1></div>
+
+            <div>
+                <md-autocomplete
+                        md-no-cache
+                        md-selected-item="pageCtrl.selectedInjury"
+                        md-search-text="pageCtrl.searchWord"
+                        md-selected-item-change="pageCtrl.onInjuryChange(item)"
+                        md-items="item in pageCtrl.filterAutocompleteResults(pageCtrl.searchWord)"
+                        md-item-text="item.name"
+                        md-min-length="0"
+                        placeholder="What kind of injury do you have?">
+                    <md-item-template>
+                        <span md-highlight-text="pageCtrl.searchWord" md-highlight-flags="^i">{{item.name}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No injuries matching "{{pageCtrl.searchWord}}" were found.
+                    </md-not-found>
+                </md-autocomplete>
+            </div>
+
+            <div>
+                <md-list>
+                    <md-list-item ng-repeat="sport in pageCtrl.availableSports" flex>
+                        <md-whiteframe class="md-whiteframe-3dp" style="margin: 10px 0; padding: 0 20px;" layout layout-align="end center" layout-fill>
+                            <div style="text-align: center;" flex>
+                                <span style="font-size: 18px;">{{sport.name}}</span>
+                            </div>
+
+                            <div>
+                                <md-button class="md-fab md-mini md-primary" aria-label="Map">
+                                    <md-icon md-svg-src="/img/ic_place_white_24px.svg"></md-icon>
+                                </md-button>
+                            </div>
+                        </md-whiteframe>
+                    </md-list-item>
+
+                </md-list>
+            </div>
+
+        </md-content>
+    </div>
+</div>
