@@ -15,18 +15,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/sports")
 public class SportsController {
 
     @Autowired
     private DatabaseConnector databaseConnector;
 
-    @GetMapping("/sports")
+    @GetMapping
     public List<Sport> sports() {
         return databaseConnector.getSports();
     }
 
-    @PostMapping("/sports/available")
+    @PostMapping
     public List<Sport> availableSports(@RequestBody List<Injury> injuries) {
         List<Integer> injuriesIds = injuries.stream().map(Injury::getId).collect(Collectors.toList());
         return databaseConnector.getSports().stream().filter(sport ->
