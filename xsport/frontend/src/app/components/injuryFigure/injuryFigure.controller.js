@@ -5,13 +5,13 @@
         .controller('InjuryFigureController', InjuryFigureController);
 
     /** @ngInject */
-    function InjuryFigureController($q, $imageLoader, BodyParts, $injurySelector) {
+    function InjuryFigureController($rootScope, $q, $imageLoader, $injuryReporter, BodyParts) {
         var vm = this;
 
-        vm.selectedBodyPart = null;
         vm.tintRegular = '#222222';
         vm.tintAccent = '#CA3327';
         vm.tintSelection = '#A3CC9D';
+        vm.tintInjure = '#FF6627';
 
         vm.onCanvasClick = onCanvasClick;
         vm.onCanvasHover = onCanvasHover;
@@ -27,21 +27,21 @@
             redrawFigure();
         });
 
+        $rootScope.$on('reportedInjuries/change', updateInjuriesHighlights);
+
         function onCanvasClick(event) {
             tryClearHighlight();
 
             var bodyPart = tryGetBodyPartAt(event);
             if (bodyPart) {
-                if (vm.selectedBodyPart) clearHighlight(vm.selectedBodyPart);
-                vm.selectedBodyPart = bodyPart;
-                $injurySelector.selectedBodyPart = bodyPart;
+                if ($injuryReporter.selectedBodyPart) clearHighlight($injuryReporter.selectedBodyPart);
+                $injuryReporter.selectedBodyPart = bodyPart;
                 highlightBodyPart(bodyPart);
             }
             else {
-                if (vm.selectedBodyPart) {
-                    clearHighlight(vm.selectedBodyPart);
-                    vm.selectedBodyPart = null;
-                    $injurySelector.selectedBodyPart = null;
+                if ($injuryReporter.selectedBodyPart) {
+                    clearHighlight($injuryReporter.selectedBodyPart);
+                    $injuryReporter.selectedBodyPart = null;
                 }
             }
         }
@@ -50,14 +50,29 @@
             tryClearHighlight();
 
             var bodyPart = tryGetBodyPartAt(event);
-            if (bodyPart && bodyPart !== vm.selectedBodyPart) {
+            if (bodyPart && bodyPart !== $injuryReporter.selectedBodyPart) {
                 highlightBodyPart(bodyPart);
                 lastHighlightedPart = bodyPart;
             }
         }
 
+        function updateInjuriesHighlights(event, changedInjuries) {
+            var prevInjuries = changedInjuries[0];
+            var currentInjuries = changedInjuries[1];
+
+            prevInjuries.forEach(function(injury) {
+                injury.bodyPartReference.tint = injury.bodyPartReference === $injuryReporter.selectedBodyPart ? vm.tintSelection : vm.tintRegular;
+            });
+
+            currentInjuries.forEach(function(injury) {
+                injury.bodyPartReference.tint = vm.tintInjure;
+            });
+
+            redrawFigure();
+        }
+
         function highlightBodyPart(bodyPart) {
-            bodyPart.tint = bodyPart === vm.selectedBodyPart ? vm.tintSelection : vm.tintAccent;
+            bodyPart.tint = bodyPart === $injuryReporter.selectedBodyPart ? vm.tintSelection : vm.tintAccent;
             redrawFigure();
         }
 
@@ -69,7 +84,7 @@
         }
 
         function clearHighlight(bodyPart) {
-            bodyPart.tint = null;
+            bodyPart.tint = $injuryReporter.hasReportedInjuresForBodyPart(bodyPart) ? vm.tintInjure : null;
             redrawFigure();
         }
 

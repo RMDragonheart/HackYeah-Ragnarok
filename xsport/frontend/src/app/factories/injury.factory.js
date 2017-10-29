@@ -9,7 +9,10 @@
         function Injury(data) {
             this.id = data.id;
             this.name = data.name;
-            this.bodyPart = data.bodyPart;
+            this.bodyPartKey = data.bodyPart;
+
+            this.bodyPartReference = null;
+            this.data = data;
         }
 
         return Injury;

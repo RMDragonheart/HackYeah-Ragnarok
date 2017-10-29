@@ -16,19 +16,25 @@
             InjuryBase = parsedInjuries;
         });
 
-        function retrieveInjuriesForBodyPart(bodyPartKey) {
-            var url = XSPORTS_API_BASE_ADDRESS + "injuries/" + bodyPartKey.toLowerCase();
+        function retrieveInjuriesForBodyPart(bodyPart) {
+            var url = XSPORTS_API_BASE_ADDRESS + "injuries/" + bodyPart.key.toLowerCase();
             return $http.get(url).then(function(response) {
-                return parseInjuries(response.data);
+                return parseInjuries(response.data).map(function(injury) {
+                    injury.bodyPartReference = bodyPart;
+                    return injury;
+                });
             });
         };
 
         function retrieveCapabilities(injuries) {
             var url = XSPORTS_API_BASE_ADDRESS + "sports/";
-            return $http.get(url, { data: injuries });
+            var requestBody = injuries.map(function(injury) {
+                return injury.data;
+            })
+            return $http.get(url, { data: requestBody });
         };
 
-        function retrieveAllInjuries(bodyPartKey) {
+        function retrieveAllInjuries() {
             var url = XSPORTS_API_BASE_ADDRESS + "injuries/";
             return $http.get(url).then(function(response) {
                 return parseInjuries(response.data);
