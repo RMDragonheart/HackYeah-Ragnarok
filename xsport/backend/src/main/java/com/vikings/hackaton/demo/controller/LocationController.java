@@ -2,10 +2,12 @@ package com.vikings.hackaton.demo.controller;
 
 import com.vikings.hackaton.demo.model.Injury;
 import com.vikings.hackaton.demo.model.Localisation;
+import com.vikings.hackaton.demo.model.User;
 import com.vikings.hackaton.demo.model.db.DatabaseConnector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +38,11 @@ public class LocationController {
                 Collections.disjoint(sport.getExcludingInjuries(), injuriesIds))
                 .flatMap(sport -> sport.getLocalisations().stream())
                 .map(localisations::get).collect(Collectors.toList());
+    }
+
+    @PutMapping("/add")
+    public void addLocalisation(@RequestBody Localisation localisation) {
+        databaseConnector.addLocalisation(localisation);
     }
 
 }
