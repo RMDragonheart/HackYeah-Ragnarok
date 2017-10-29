@@ -46,7 +46,7 @@ public class MainWindow extends JFrame {
           displayFileInputForm();
         } catch (FileNotFoundException e) {
           LOGGER.error("An error occurred while loading data.", e);
-          JOptionPane.showMessageDialog(MainWindow.this, Throwables.getRootCause(e).getMessage(), "Error!!!!", JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(MainWindow.this, Throwables.getRootCause(e).getMessage(), "Pro", JOptionPane.ERROR_MESSAGE);
         }
         return null;
       }
@@ -95,7 +95,7 @@ public class MainWindow extends JFrame {
   }
 
   public PreparedDataReader getPreparedDataReader() throws FileNotFoundException {
-    return new PreparedDataReader(new FileInputStream("/opt/data/osm/malopolskie.csv"));
+    return new PreparedDataReader(new FileInputStream("malopolskie.csv"));
   }
 }
 
