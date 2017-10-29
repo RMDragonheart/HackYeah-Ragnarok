@@ -1,0 +1,11 @@
+Launch project:
+
+cd ./backend/
+mvn spring-boot:run
+
+cd ../frontend/
+npm install
+bower install
+gulp serve
+
+Then, enable CORS auto insertion in your browser(for example, plugin CorsE for firefox) 
