@@ -5,11 +5,13 @@
         .controller('InjuryFigureController', InjuryFigureController);
 
     /** @ngInject */
-    function InjuryFigureController($q, $imageLoader, BodyParts) {
+    function InjuryFigureController($q, $imageLoader, BodyParts, $injurySelector) {
         var vm = this;
 
+        vm.selectedBodyPart = null;
         vm.tintRegular = '#222222';
         vm.tintAccent = '#CA3327';
+        vm.tintSelection = '#A3CC9D';
 
         vm.onCanvasClick = onCanvasClick;
         vm.onCanvasHover = onCanvasHover;
@@ -26,9 +28,21 @@
         });
 
         function onCanvasClick(event) {
+            tryClearHighlight();
+
             var bodyPart = tryGetBodyPartAt(event);
             if (bodyPart) {
-                
+                if (vm.selectedBodyPart) clearHighlight(vm.selectedBodyPart);
+                vm.selectedBodyPart = bodyPart;
+                $injurySelector.selectedBodyPart = bodyPart;
+                highlightBodyPart(bodyPart);
+            }
+            else {
+                if (vm.selectedBodyPart) {
+                    clearHighlight(vm.selectedBodyPart);
+                    vm.selectedBodyPart = null;
+                    $injurySelector.selectedBodyPart = null;
+                }
             }
         }
 
@@ -36,14 +50,14 @@
             tryClearHighlight();
 
             var bodyPart = tryGetBodyPartAt(event);
-            if (bodyPart) {
+            if (bodyPart && bodyPart !== vm.selectedBodyPart) {
                 highlightBodyPart(bodyPart);
                 lastHighlightedPart = bodyPart;
             }
         }
 
         function highlightBodyPart(bodyPart) {
-            bodyPart.tint = vm.tintAccent;
+            bodyPart.tint = bodyPart === vm.selectedBodyPart ? vm.tintSelection : vm.tintAccent;
             redrawFigure();
         }
 
