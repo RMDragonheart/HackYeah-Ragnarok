@@ -11,6 +11,7 @@
 
         this.retrieveInjuriesForBodyPart = retrieveInjuriesForBodyPart;
         this.retrieveCapabilities = retrieveCapabilities;
+        this.retrieveLocations = retrieveLocations;
 
         retrieveAllInjuries().then(function(parsedInjuries) {
             InjuryBase = parsedInjuries;
@@ -24,17 +25,24 @@
                     return injury;
                 });
             });
-        };
+        }
 
         function retrieveCapabilities(injuries) {
             var url = XSPORTS_API_BASE_ADDRESS + "sports/";
             var requestBody = injuries.map(function(injury) {
                 return injury.data;
-            })
+            });
             return $http.get(url, { data: requestBody }).then(function(response) {
                 return response.data;
             });
-        };
+        }
+
+        function retrieveLocations(sportId) {
+            var url = XSPORTS_API_BASE_ADDRESS + "locations/" + sportId;
+            return $http.get(url).then(function(response) {
+                return response.data;
+            });
+        }
 
         function retrieveAllInjuries() {
             var url = XSPORTS_API_BASE_ADDRESS + "injuries/";

@@ -5,7 +5,7 @@
         .controller('InjuryDashboardController', InjuryDashboardController);
 
     /** @ngInject */
-    function InjuryDashboardController($scope, $xsportsClient, $injuryReporter) {
+    function InjuryDashboardController($scope, $xsportsClient, $injuryReporter, MapPreview) {
         var vm = this;
 
         vm.selectedBodyPart = null;
@@ -16,6 +16,7 @@
 
         vm.filterAutocompleteResults = filterAutocompleteResults;
         vm.onInjuryChange = onInjuryChange;
+        vm.onShowLocationClick = onShowLocationClick;
 
         $scope.$watch(function() { return $injuryReporter.selectedBodyPart; }, updateSelectedBodyPart);
 
@@ -23,7 +24,7 @@
             vm.selectedBodyPart = $injuryReporter.selectedBodyPart;
             vm.selectedInjury = $injuryReporter.tryGetReportedInjuryForBodyPart(vm.selectedBodyPart);
             vm.availableSports = [];
-            
+
             if (vm.selectedBodyPart) {
                 $xsportsClient.retrieveInjuriesForBodyPart(vm.selectedBodyPart).then(function(injuries) {
                     vm.injuriesForBodyPart = injuries;
@@ -49,10 +50,16 @@
                 $injuryReporter.includeToReport(injury);
                 var promise = $xsportsClient.retrieveCapabilities($injuryReporter.reportedInjuries);
                 promise.then(function(sports) {
-                    console.log(sports);
                     vm.availableSports = sports;
                 });
             }
+        }
+
+        function onShowLocationClick(sport) {
+            var promise = $xsportsClient.retrieveLocations(sport.id);
+            promise.then(function(locations) {
+                var mapPreview = new MapPreview(locations);
+            });
         }
     }
 

@@ -1,7 +1,9 @@
 {
   "name": "rampup",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "angular-simple-logger": "^0.1.7"
+  },
   "scripts": {
     "test": "gulp test"
   },
