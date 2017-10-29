@@ -17,18 +17,18 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/locations")
 public class LocationController {
 
     @Autowired
     private DatabaseConnector databaseConnector;
 
-    @GetMapping("/locations")
+    @GetMapping
     public List<Localisation> locations() {
         return databaseConnector.getLocalisations();
     }
 
-    @PostMapping("/locations/")
+    @PostMapping
     public List<Localisation> availableLocations(@RequestBody List<Injury> injuries) {
         List<Integer> injuriesIds = injuries.stream().map(Injury::getId).collect(Collectors.toList());
         Map<Integer, Localisation> localisations = databaseConnector.getLocalisations().stream().collect(Collectors.toMap(Localisation::getId, Function.identity()));
