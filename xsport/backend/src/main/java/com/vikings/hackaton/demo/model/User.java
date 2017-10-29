@@ -11,6 +11,6 @@ public class User {
     private String name;
     private String password;
     private List<Integer> injuries;
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 }

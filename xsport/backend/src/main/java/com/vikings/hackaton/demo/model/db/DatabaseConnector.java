@@ -18,4 +18,6 @@ public interface DatabaseConnector {
     List<User> getUsers();
 
     void addUser(User user);
+
+    void addLocalisation(Localisation localisation);
 }
