@@ -42,42 +42,42 @@ public class DatabaseConnectorMock implements DatabaseConnector {
 					new Injury(6, "No grip in hands", BodyPart.HAND),
 					new Injury(7, "Heart problems", BodyPart.MAIN_BODY),
 
-					new Injury(8, "S63.0 ZWICHNIĘCIE NADGARSTKA", BodyPart.HAND),
-					new Injury(9, "S63.2 MNOGIE ZWICHNIĘCIA PALCÓW", BodyPart.HAND),
-					new Injury(10, "S63.5 SKRĘCENIE I NADERWANIE NADGARSTKA", BodyPart.HAND),
-					new Injury(11, "S63.6 SKRĘCENIE I NADERWANIE PALCA (PALCÓW)", BodyPart.HAND),
+					new Injury(8, "S63.0 Subluxation and dislocation of wrist and hand joints", BodyPart.HAND),
+					new Injury(9, "S63.2 Subluxation and dislocation of other finger(s)", BodyPart.HAND),
+					new Injury(10, "S63.5 Other and unspecified sprain of wrist", BodyPart.HAND),
+					new Injury(11, "S63.6 Other and unspecified sprain of finger(s)", BodyPart.HAND),
 
-					new Injury(12, "S97.0 URAZ ZMIAŻDŻENIOWY STAWU SKOKOWEGO", BodyPart.FOOT),
-					new Injury(13, "S97.1 URAZ ZMIAŻDŻENIOWY PALCA (PALCÓW) STOPY", BodyPart.FOOT),
-					new Injury(14, "S97.8 URAZ ZMIAŻDŻENIOWY INNYCH CZĘŚCI STAWU SKOKOWEGO I STOPY", BodyPart.FOOT),
-					new Injury(15, "S98.0 URAZOWA AMPUTACJA STOPY NA POZIOMIE STAWU SKOKOWEGO", BodyPart.FOOT),
+					new Injury(12, "S97.0 Crushing injury of ankle", BodyPart.FOOT),
+					new Injury(13, "S97.1 Crushing injury of toe", BodyPart.FOOT),
+					new Injury(14, "S97.8 Crushing injury of foot", BodyPart.FOOT),
+					new Injury(15, "S98.0 Traumatic amputation of foot at ankle level", BodyPart.FOOT),
 
-					new Injury(16, "S86.0 URAZ ŚCIĘGNA ACHILLESA", BodyPart.CALF),
-					new Injury(17, "S86.9 URAZ NIEOKREŚLONEGO MIĘŚNIA I ŚCIĘGNA NA POZIOMIE PODUDZIA", BodyPart.CALF),
-					new Injury(18, "S88.0 URAZOWA AMPUTACJA NA POZIOMIE KOLANA", BodyPart.CALF),
-					new Injury(19, "S89.8 INNE OKREŚLONE URAZY PODUDZIA", BodyPart.CALF),
+					new Injury(16, "S86.0 Injury of Achilles tendon", BodyPart.CALF),
+					new Injury(17, "S86.9 Injury of unspecified muscle and tendon at lower leg level", BodyPart.CALF),
+					new Injury(18, "S88.0 Traumatic amputation at knee level", BodyPart.CALF),
+					new Injury(19, "S89.8 Other specified injuries of lower leg", BodyPart.CALF),
 
-					new Injury(20, "S72.0 ZŁAMANIE SZYJKI KOŚCI UDOWEJ", BodyPart.THIGH),
-					new Injury(21, "S72.1 ZŁAMANIE PRZEZKRETARZOWE", BodyPart.THIGH),
-					new Injury(22, "S72.3 ZŁAMANIE TRZONU KOŚCI UDOWEJ", BodyPart.THIGH),
-					new Injury(23, "S72.4 ZŁAMANIE NASADY DALSZEJ KOŚCI UDOWEJ", BodyPart.THIGH),
+					new Injury(20, "S72.0 Fracture of head and neck of femur", BodyPart.THIGH),
+					new Injury(21, "S72.1 Pertrochanteric fracture", BodyPart.THIGH),
+					new Injury(22, "S72.3 Fracture of shaft of femur", BodyPart.THIGH),
+					new Injury(23, "S72.4 Fracture of lower end of femur", BodyPart.THIGH),
 
-					new Injury(24, "S52.0 ZŁAMANIE NASADY BLIŻSZEJ KOŚCI ŁOKCIOWEJ", BodyPart.FOREARM),
-					new Injury(25, "S52.03 ZŁAMANIE MONTEGGIA", BodyPart.FOREARM),
-					new Injury(26, "S52.1 ZŁAMANIE NASADY BLIŻSZEJ KOŚCI PROMIENIOWEJ", BodyPart.FOREARM),
-					new Injury(27, "S52.3 ZŁAMANIE TRZONU KOŚCI PROMIENIOWEJ", BodyPart.FOREARM),
+					new Injury(24, "S52.0 Fracture of upper end of ulna", BodyPart.FOREARM),
+					new Injury(25, "S52.03 Fracture of olecranon process with intraarticular extension of ulna", BodyPart.FOREARM),
+					new Injury(26, "S52.1 Fracture of upper end of radius", BodyPart.FOREARM),
+					new Injury(27, "S52.3 Fracture of shaft of radius", BodyPart.FOREARM),
 
-					new Injury(28, "S40.0 STŁUCZENIE BARKU I RAMIENIA", BodyPart.ARM),
-					new Injury(29, "S42.1 ZŁAMANIE ŁOPATKI", BodyPart.ARM),
-					new Injury(30, "S42.11 WYROSTEK BARKOWY", BodyPart.ARM),
-					new Injury(31, "S42.14 GRZEBIEŃ ŁOPATKI", BodyPart.ARM),
+                    			new Injury(28, "S40.0 Injury of shoulder and forearm", BodyPart.ARM),
+                    			new Injury(29, "S42.1 Fracture of the scapula", BodyPart.ARM),
+                    			new Injury(30, "S42.11 Acromion", BodyPart.ARM),
+                    			new Injury(31, "S42.14 Spine of scapula", BodyPart.ARM),
 
-					new Injury(32, "S30.0 STŁUCZENIE DOLNEJ CZĘŚCI GRZBIETU I MIEDNICY", BodyPart.LOWER_BODY),
-					new Injury(33, "S30.1 STŁUCZENIE ŚCIANY BRZUCHA", BodyPart.LOWER_BODY),
-					new Injury(34, "S30.2 STŁUCZENIE NARZĄDÓW PŁCIOWYCH ZEWNĘTRZNYCH", BodyPart.LOWER_BODY),
-					new Injury(35, "S30.7 LICZNE POWIERZCHOWNE URAZY BRZUCHA, DOLNEJ CZĘŚCI GRZBIETU I MIEDNICY", BodyPart.LOWER_BODY),
+					new Injury(32, "S30.0 Contusion of lower back and pelvis", BodyPart.LOWER_BODY),
+					new Injury(33, "S30.1 Contusion of abdominal wall", BodyPart.LOWER_BODY),
+					new Injury(34, "S30.2 Contusion of external genital organs", BodyPart.LOWER_BODY),
+					new Injury(35, "S30.7 Numerous superficial injuries of abdomen, lower back and pelvis", BodyPart.LOWER_BODY),
 
-					new Injury(36, "B35.4 GRZYBICA CIAŁA", BodyPart.FULL_BODY)
+					new Injury(36, "B35.4 Ringworm of the body", BodyPart.FULL_BODY)
 	);
 
 	private static final List<Localisation> localisations = Arrays.asList(
