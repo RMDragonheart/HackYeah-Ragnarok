@@ -67,10 +67,10 @@ public class DatabaseConnectorMock implements DatabaseConnector {
 					new Injury(26, "S52.1 Fracture of upper end of radius", BodyPart.FOREARM),
 					new Injury(27, "S52.3 Fracture of shaft of radius", BodyPart.FOREARM),
 
-                    			new Injury(28, "S40.0 Injury of shoulder and forearm", BodyPart.ARM),
-                    			new Injury(29, "S42.1 Fracture of the scapula", BodyPart.ARM),
-                    			new Injury(30, "S42.11 Acromion", BodyPart.ARM),
-                    			new Injury(31, "S42.14 Spine of scapula", BodyPart.ARM),
+					new Injury(28, "S40.0 Injury of shoulder and forearm", BodyPart.ARM),
+					new Injury(29, "S42.1 Fracture of the scapula", BodyPart.ARM),
+					new Injury(30, "S42.11 Acromion", BodyPart.ARM),
+					new Injury(31, "S42.14 Spine of scapula", BodyPart.ARM),
 
 					new Injury(32, "S30.0 Contusion of lower back and pelvis", BodyPart.LOWER_BODY),
 					new Injury(33, "S30.1 Contusion of abdominal wall", BodyPart.LOWER_BODY),
