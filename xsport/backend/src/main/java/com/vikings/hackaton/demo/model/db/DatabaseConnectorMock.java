@@ -4,6 +4,7 @@ import com.vikings.hackaton.demo.model.BodyPart;
 import com.vikings.hackaton.demo.model.Injury;
 import com.vikings.hackaton.demo.model.Localisation;
 import com.vikings.hackaton.demo.model.Sport;
+import com.vikings.hackaton.demo.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -35,6 +36,8 @@ public class DatabaseConnectorMock implements DatabaseConnector {
             new Localisation(4, "Centrum Wspinaczkowe Forteca", 4, 4)
     );
 
+    private static final List<User> users = Collections.singletonList(new User("user", "pwd", Collections.singletonList(1), 1, 1));
+
     @Override
     public List<Sport> getSports() {
         return sports;
@@ -48,5 +51,15 @@ public class DatabaseConnectorMock implements DatabaseConnector {
     @Override
     public List<Localisation> getLocalisations() {
         return localisations;
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return users;
+    }
+
+    @Override
+    public void addUser(User user) {
+        users.add(user);
     }
 }
