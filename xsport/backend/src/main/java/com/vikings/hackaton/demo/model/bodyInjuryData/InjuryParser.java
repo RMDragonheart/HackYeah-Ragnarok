@@ -9,13 +9,10 @@ import org.springframework.util.StringUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 
-public class InjuryParser {
+class InjuryParser {
 
-	public static void main(String[] args) throws IOException {
-		Map<String, String[]> entireInjury = new HashMap<>();
+	static void runInjuryParser() throws IOException {
 		PrintWriter save = new PrintWriter("xsport/backend/src/main/resources/Injury/EntireInjury.txt");
 		File input = new File("xsport/backend/src/main/resources/Injury/WebData.html");
 		Document doc = Jsoup.parse(input, "UTF-8", "http://lista.icd10.pl/");
@@ -29,25 +26,23 @@ public class InjuryParser {
 				text = text.replaceAll("\u00A0", " ");
 				String[] separatedData = text.split("\\s{2,}");
 				for (String s : separatedData) {
-					StringBuffer idBuffer = new StringBuffer();
+					StringBuilder idBuilder = new StringBuilder();
 
 					for (int i = 0; i < s.length(); i++) {
 						if (s.charAt(i) != ' ') {
-							idBuffer.append(s.charAt(i));
+							idBuilder.append(s.charAt(i));
 						} else {
 							break;
 						}
 					}
 
-					String id = idBuffer.toString();
+					String id = idBuilder.toString();
 					if (StringUtils.countOccurrencesOf(s, id) > 1) {
 						// We know that ID is duplicated in that row. We have to remove it
 						if (id.contains("-")) {
 							String[] data = parseDashString(id, s);
 							save.println(data[0]);
-							System.out.println("I get: " + data[0]);
 							save.println(data[1]);
-							System.out.println("I get: " + data[1]);
 							continue;
 						} else {
 							s = parseNormalString(id, s);
@@ -55,13 +50,12 @@ public class InjuryParser {
 					}
 
 					save.println(s);
-					System.out.println("I get: " + s);
 				}
 			}
 		}
 
 		save.close();
-		System.out.println("Connection successful!");
+		System.out.println("Crawling and data parsing - SUCCEEDED!");
 	}
 
 	private static String[] parseDashString(String id, String stringToParse) {
