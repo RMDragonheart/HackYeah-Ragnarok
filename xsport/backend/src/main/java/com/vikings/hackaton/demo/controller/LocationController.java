@@ -2,7 +2,6 @@ package com.vikings.hackaton.demo.controller;
 
 import com.vikings.hackaton.demo.model.Injury;
 import com.vikings.hackaton.demo.model.Localisation;
-import com.vikings.hackaton.demo.model.User;
 import com.vikings.hackaton.demo.model.db.DatabaseConnector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
@@ -38,6 +38,12 @@ public class LocationController {
                 Collections.disjoint(sport.getExcludingInjuries(), injuriesIds))
                 .flatMap(sport -> sport.getLocalisations().stream())
                 .map(localisations::get).collect(Collectors.toList());
+    }
+
+    @PostMapping("/{id}")
+    public List<Localisation> sportLocations(@RequestParam Integer id) {
+        List<Integer> localisationsIds = databaseConnector.getSports().stream().filter(sport1 -> sport1.getId() == id).findFirst().get().getLocalisations();
+        return databaseConnector.getLocalisations().stream().filter(localisation -> localisationsIds.contains(localisation.getId())).collect(Collectors.toList());
     }
 
     @PutMapping("/add")
