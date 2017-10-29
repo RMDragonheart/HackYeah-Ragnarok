@@ -31,7 +31,9 @@
             var requestBody = injuries.map(function(injury) {
                 return injury.data;
             })
-            return $http.get(url, { data: requestBody });
+            return $http.get(url, { data: requestBody }).then(function(response) {
+                return response.data;
+            });
         };
 
         function retrieveAllInjuries() {

@@ -12,6 +12,7 @@
         vm.selectedInjury = null;
         vm.injuriesForBodyPart = [];
         vm.searchWord = "";
+        vm.availableSports = [];
 
         vm.filterAutocompleteResults = filterAutocompleteResults;
         vm.onInjuryChange = onInjuryChange;
@@ -21,7 +22,8 @@
         function updateSelectedBodyPart() {
             vm.selectedBodyPart = $injuryReporter.selectedBodyPart;
             vm.selectedInjury = $injuryReporter.tryGetReportedInjuryForBodyPart(vm.selectedBodyPart);
-
+            vm.availableSports = [];
+            
             if (vm.selectedBodyPart) {
                 $xsportsClient.retrieveInjuriesForBodyPart(vm.selectedBodyPart).then(function(injuries) {
                     vm.injuriesForBodyPart = injuries;
@@ -45,6 +47,11 @@
 
             if (injury) {
                 $injuryReporter.includeToReport(injury);
+                var promise = $xsportsClient.retrieveCapabilities($injuryReporter.reportedInjuries);
+                promise.then(function(sports) {
+                    console.log(sports);
+                    vm.availableSports = sports;
+                });
             }
         }
     }

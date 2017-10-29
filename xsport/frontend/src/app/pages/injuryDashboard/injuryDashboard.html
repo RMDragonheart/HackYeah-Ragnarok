@@ -36,6 +36,25 @@
                 </md-autocomplete>
             </div>
 
+            <div>
+                <md-list>
+                    <md-list-item ng-repeat="sport in pageCtrl.availableSports" flex>
+                        <md-whiteframe class="md-whiteframe-3dp" style="margin: 10px 0; padding: 0 20px;" layout layout-align="end center" layout-fill>
+                            <div style="text-align: center;" flex>
+                                <span style="font-size: 18px;">{{sport.name}}</span>
+                            </div>
+
+                            <div>
+                                <md-button class="md-fab md-mini md-primary" aria-label="Map">
+                                    <md-icon md-svg-src="/img/ic_place_white_24px.svg"></md-icon>
+                                </md-button>
+                            </div>
+                        </md-whiteframe>
+                    </md-list-item>
+
+                </md-list>
+            </div>
+
         </md-content>
     </div>
 </div>
