@@ -15,20 +15,21 @@ import java.util.List;
 public class DatabaseConnectorMock implements DatabaseConnector {
 
 	private static final List<Sport> sports = Arrays.asList(
-					new Sport(0, "SlackLine", Arrays.asList(1, 2, 3, 5), Arrays.asList(0, 1, 2, 3, 4)),
-					new Sport(1, "Swimming", Arrays.asList(2, 3), Arrays.asList(0, 2, 3, 5, 6)),
-					new Sport(2, "Climbing", Arrays.asList(4, 2, 3, 6, 7), Arrays.asList(1, 2, 4)),
-					new Sport(3, "Running", Arrays.asList(1, 2, 3, 5), Arrays.asList(0, 2, 3)),
-					new Sport(4, "Ice skating", Arrays.asList(1, 2, 3, 5), Arrays.asList(11)),
-					new Sport(5, "Wakeboarding", Arrays.asList(2, 3, 4, 5, 6, 7), Arrays.asList(6)),
-					new Sport(6, "Kayaking", Arrays.asList(0, 2, 3, 4, 6), Arrays.asList(5)),
-					new Sport(7, "Football", Arrays.asList(1, 2, 3, 5), Arrays.asList(2, 5, 12)),
-					new Sport(8, "Quidditch", Arrays.asList(0, 1, 2, 3, 4, 5, 6), Arrays.asList(2, 12)),
-					new Sport(9, "Capoeira", Arrays.asList(1, 2, 3, 5), Arrays.asList(13)),
-					new Sport(10, "Dancing", Arrays.asList(1, 2, 3, 5), Arrays.asList(2, 10, 13)),
-					new Sport(11, "Fencing", Arrays.asList(1, 2, 3, 4, 5, 6), Arrays.asList(9)),
-					new Sport(12, "Basketball", Arrays.asList(2, 3, 4, 6), Arrays.asList(2, 12)),
-					new Sport(13, "Balloon flying", Arrays.asList(), Arrays.asList(7))
+					new Sport(0, "SlackLine", Arrays.asList(1, 2, 3, 5, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23), Arrays.asList(0, 1, 2, 3, 4)),
+					new Sport(1, "Swimming", Arrays.asList(2, 3, 8, 32, 33, 34, 35, 36), Arrays.asList(0, 2, 3, 5, 6)),
+					new Sport(2, "Climbing", Arrays.asList(4, 2, 3, 6, 7, 8, 9, 10, 11, 24, 25, 26, 27), Arrays.asList(1, 2, 4)),
+					new Sport(3, "Running", Arrays.asList(1, 2, 3, 5, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 32, 33, 34, 35), Arrays.asList(0, 2, 3)),
+					new Sport(4, "Ice skating", Arrays.asList(1, 2, 3, 5, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 32, 33, 34, 35), Arrays.asList(11)),
+					new Sport(5, "Wakeboarding", Arrays.asList(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35), Arrays.asList(6)),
+					new Sport(6, "Kayaking", Arrays.asList(0, 2, 3, 4, 6, 8, 9, 10, 11, 24, 25, 26, 27, 28, 29, 30, 31), Arrays.asList(5)),
+					new Sport(7, "Football", Arrays.asList(1, 2, 3, 5, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 32, 33, 34, 35), Arrays.asList(2, 5, 12)),
+					new Sport(8, "Quidditch", Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35), Arrays.asList(2, 12)),
+					new Sport(9, "Capoeira", Arrays.asList(1, 2, 3, 5, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 32, 33, 34, 35), Arrays.asList(13)),
+					new Sport(10, "Dancing", Arrays.asList(1, 2, 3, 5, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 32, 33, 34, 35), Arrays.asList(2, 10, 13)),
+					new Sport(11, "Fencing", Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35), Arrays.asList(9)),
+					new Sport(12, "Basketball", Arrays.asList(0, 2, 3, 4, 6, 8, 9, 10, 11, 24, 25, 26, 27, 28, 29, 30, 31), Arrays.asList(2, 12)),
+					new Sport(13, "Balloon flying", Arrays.asList(), Arrays.asList(7)),
+					new Sport(14, "Skydiving", Arrays.asList(), Arrays.asList(14))
 	);
 
 	private static final List<Injury> injuries = Arrays.asList(
@@ -41,43 +42,43 @@ public class DatabaseConnectorMock implements DatabaseConnector {
 					new Injury(6, "No grip in hands", BodyPart.HAND),
 					new Injury(7, "Heart problems", BodyPart.MAIN_BODY),
 
-					new Injury(7, "S63.0 ZWICHNIĘCIE NADGARSTKA", BodyPart.HAND),
-					new Injury(7, "S63.2 MNOGIE ZWICHNIĘCIA PALCÓW", BodyPart.HAND),
-					new Injury(7, "S63.5 SKRĘCENIE I NADERWANIE NADGARSTKA", BodyPart.HAND),
-					new Injury(7, "S63.6 SKRĘCENIE I NADERWANIE PALCA (PALCÓW)", BodyPart.HAND),
+					new Injury(8, "S63.0 ZWICHNIĘCIE NADGARSTKA", BodyPart.HAND),
+					new Injury(9, "S63.2 MNOGIE ZWICHNIĘCIA PALCÓW", BodyPart.HAND),
+					new Injury(10, "S63.5 SKRĘCENIE I NADERWANIE NADGARSTKA", BodyPart.HAND),
+					new Injury(11, "S63.6 SKRĘCENIE I NADERWANIE PALCA (PALCÓW)", BodyPart.HAND),
 
-					new Injury(7, "S97.0 URAZ ZMIAŻDŻENIOWY STAWU SKOKOWEGO", BodyPart.FOOT),
-					new Injury(7, "S97.1 URAZ ZMIAŻDŻENIOWY PALCA (PALCÓW) STOPY", BodyPart.FOOT),
-					new Injury(7, "S97.8 URAZ ZMIAŻDŻENIOWY INNYCH CZĘŚCI STAWU SKOKOWEGO I STOPY", BodyPart.FOOT),
-					new Injury(7, "S98.0 URAZOWA AMPUTACJA STOPY NA POZIOMIE STAWU SKOKOWEGO", BodyPart.FOOT),
+					new Injury(12, "S97.0 URAZ ZMIAŻDŻENIOWY STAWU SKOKOWEGO", BodyPart.FOOT),
+					new Injury(13, "S97.1 URAZ ZMIAŻDŻENIOWY PALCA (PALCÓW) STOPY", BodyPart.FOOT),
+					new Injury(14, "S97.8 URAZ ZMIAŻDŻENIOWY INNYCH CZĘŚCI STAWU SKOKOWEGO I STOPY", BodyPart.FOOT),
+					new Injury(15, "S98.0 URAZOWA AMPUTACJA STOPY NA POZIOMIE STAWU SKOKOWEGO", BodyPart.FOOT),
 
-					new Injury(7, "S86.0 URAZ ŚCIĘGNA ACHILLESA", BodyPart.CALF),
-					new Injury(7, "S86.9 URAZ NIEOKREŚLONEGO MIĘŚNIA I ŚCIĘGNA NA POZIOMIE PODUDZIA", BodyPart.CALF),
-					new Injury(7, "S88.0 URAZOWA AMPUTACJA NA POZIOMIE KOLANA", BodyPart.CALF),
-					new Injury(7, "S89.8 INNE OKREŚLONE URAZY PODUDZIA", BodyPart.CALF),
+					new Injury(16, "S86.0 URAZ ŚCIĘGNA ACHILLESA", BodyPart.CALF),
+					new Injury(17, "S86.9 URAZ NIEOKREŚLONEGO MIĘŚNIA I ŚCIĘGNA NA POZIOMIE PODUDZIA", BodyPart.CALF),
+					new Injury(18, "S88.0 URAZOWA AMPUTACJA NA POZIOMIE KOLANA", BodyPart.CALF),
+					new Injury(19, "S89.8 INNE OKREŚLONE URAZY PODUDZIA", BodyPart.CALF),
 
-					new Injury(7, "S72.0 ZŁAMANIE SZYJKI KOŚCI UDOWEJ", BodyPart.THIGH),
-					new Injury(7, "S72.1 ZŁAMANIE PRZEZKRETARZOWE", BodyPart.THIGH),
-					new Injury(7, "S72.3 ZŁAMANIE TRZONU KOŚCI UDOWEJ", BodyPart.THIGH),
-					new Injury(7, "S72.4 ZŁAMANIE NASADY DALSZEJ KOŚCI UDOWEJ", BodyPart.THIGH),
+					new Injury(20, "S72.0 ZŁAMANIE SZYJKI KOŚCI UDOWEJ", BodyPart.THIGH),
+					new Injury(21, "S72.1 ZŁAMANIE PRZEZKRETARZOWE", BodyPart.THIGH),
+					new Injury(22, "S72.3 ZŁAMANIE TRZONU KOŚCI UDOWEJ", BodyPart.THIGH),
+					new Injury(23, "S72.4 ZŁAMANIE NASADY DALSZEJ KOŚCI UDOWEJ", BodyPart.THIGH),
 
-					new Injury(7, "S52.0 ZŁAMANIE NASADY BLIŻSZEJ KOŚCI ŁOKCIOWEJ", BodyPart.FOREARM),
-					new Injury(7, "S52.03 ZŁAMANIE MONTEGGIA", BodyPart.FOREARM),
-					new Injury(7, "S52.1 ZŁAMANIE NASADY BLIŻSZEJ KOŚCI PROMIENIOWEJ", BodyPart.FOREARM),
-					new Injury(7, "S52.3 ZŁAMANIE TRZONU KOŚCI PROMIENIOWEJ", BodyPart.FOREARM),
+					new Injury(24, "S52.0 ZŁAMANIE NASADY BLIŻSZEJ KOŚCI ŁOKCIOWEJ", BodyPart.FOREARM),
+					new Injury(25, "S52.03 ZŁAMANIE MONTEGGIA", BodyPart.FOREARM),
+					new Injury(26, "S52.1 ZŁAMANIE NASADY BLIŻSZEJ KOŚCI PROMIENIOWEJ", BodyPart.FOREARM),
+					new Injury(27, "S52.3 ZŁAMANIE TRZONU KOŚCI PROMIENIOWEJ", BodyPart.FOREARM),
 
-					new Injury(7, "S40.0 STŁUCZENIE BARKU I RAMIENIA", BodyPart.ARM),
-					new Injury(7, "S42.1 ZŁAMANIE ŁOPATKI", BodyPart.ARM),
-					new Injury(7, "S42.11 WYROSTEK BARKOWY", BodyPart.ARM),
-					new Injury(7, "S42.14 GRZEBIEŃ ŁOPATKI", BodyPart.ARM),
+					new Injury(28, "S40.0 STŁUCZENIE BARKU I RAMIENIA", BodyPart.ARM),
+					new Injury(29, "S42.1 ZŁAMANIE ŁOPATKI", BodyPart.ARM),
+					new Injury(30, "S42.11 WYROSTEK BARKOWY", BodyPart.ARM),
+					new Injury(31, "S42.14 GRZEBIEŃ ŁOPATKI", BodyPart.ARM),
 
-					new Injury(7, "S30.0 STŁUCZENIE DOLNEJ CZĘŚCI GRZBIETU I MIEDNICY", BodyPart.LOWER_BODY),
-					new Injury(7, "S30.1 STŁUCZENIE ŚCIANY BRZUCHA", BodyPart.LOWER_BODY),
-					new Injury(7, "S30.2 STŁUCZENIE NARZĄDÓW PŁCIOWYCH ZEWNĘTRZNYCH", BodyPart.LOWER_BODY),
-					new Injury(7, "S30.7 LICZNE POWIERZCHOWNE URAZY BRZUCHA, DOLNEJ CZĘŚCI GRZBIETU I MIEDNICY", BodyPart.LOWER_BODY),
+					new Injury(32, "S30.0 STŁUCZENIE DOLNEJ CZĘŚCI GRZBIETU I MIEDNICY", BodyPart.LOWER_BODY),
+					new Injury(33, "S30.1 STŁUCZENIE ŚCIANY BRZUCHA", BodyPart.LOWER_BODY),
+					new Injury(34, "S30.2 STŁUCZENIE NARZĄDÓW PŁCIOWYCH ZEWNĘTRZNYCH", BodyPart.LOWER_BODY),
+					new Injury(35, "S30.7 LICZNE POWIERZCHOWNE URAZY BRZUCHA, DOLNEJ CZĘŚCI GRZBIETU I MIEDNICY", BodyPart.LOWER_BODY),
 
-					new Injury(7, "B35.4 GRZYBICA CIAŁA", BodyPart.FULL_BODY)
-					);
+					new Injury(36, "B35.4 GRZYBICA CIAŁA", BodyPart.FULL_BODY)
+	);
 
 	private static final List<Localisation> localisations = Arrays.asList(
 					new Localisation(0, "Platinium Wadowicka", 50.0330614, 19.937865),
@@ -93,7 +94,8 @@ public class DatabaseConnectorMock implements DatabaseConnector {
 					new Localisation(10, "Skarlet - szkoła tańca", 50.0604593, 19.9256452),
 					new Localisation(11, "Lodowisko Cracovia", 50.0568753, 19.9467302),
 					new Localisation(12, "Tauron Arena", 50.0676592, 19.9885267),
-					new Localisation(13, "Capoeira Camangula", 50.1779943, 19.1746822)
+					new Localisation(13, "Capoeira Camangula", 50.1779943, 19.1746822),
+					new Localisation(14, "Skoki spadochronowe", 50.009044, 19.981104)
 	);
 
 	private static final List<User> users = Collections.singletonList(new User("user", "pwd", Collections.singletonList(1), 1, 1));
